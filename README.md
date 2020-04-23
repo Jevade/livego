@@ -39,12 +39,12 @@ Run `docker run -p 1935:1935 -p 7001:7001 -p 7002:7002 -p 8090:8090 -d gwuhaolin
 
 ## Use
 1. Start the service: execute the livego binary file or `make run` to start the livego service;
-2. Get a channelkey from `http://localhost:8090/control/get?room=movie` and copy data like your channelkey.
+2. Get a channelkey from `http://localhost:8090/control/get?room={roomname}` and copy data like your channelkey.
 3. Upstream push: Push the video stream to `rtmp://localhost:1935/{appname}/{channelkey}` through the` RTMP` protocol(default appname is `live`), for example, use `ffmpeg -re -i demo.flv -c copy -f flv rtmp://localhost:1935/{appname}/{channelkey}` push;
 4. Downstream playback: The following three playback protocols are supported, and the playback address is as follows:
-    - `RTMP`:`rtmp://localhost:1935/{appname}/{channelkey}`
-    - `FLV`:`http://127.0.0.1:7001/{appname}/{channelkey}.flv`
-    - `HLS`:`http://127.0.0.1:7002/{appname}/{channelkey}.m3u8`
+    - `RTMP`:`rtmp://localhost:1935/{appname}/{roomname}`
+    - `FLV`:`http://127.0.0.1:7001/{appname}/{roomname}.flv`
+    - `HLS`:`http://127.0.0.1:7002/{appname}/{roomname}.m3u8`
    
 all options: 
 ```bash
